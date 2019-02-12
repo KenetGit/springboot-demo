@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="useMapperCommentGenerator" value="false"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8&amp;allowMultiQueries=true"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- 对于生成的 pojo所在包 -->
+        <javaModelGenerator targetPackage="top.kenetgit.springbootdemo.pojo" targetProject="src/main/java"/>
+
+        <!-- 对于生成的 mapper所在目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 配置 mapper对应的java映射 -->
+        <javaClientGenerator targetPackage="top.kenetgit.springbootdemo.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+
+        <table tableName="tb_goods">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="tb_user">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
